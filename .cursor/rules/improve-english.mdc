@@ -1,0 +1,50 @@
+---
+description: Improve user's English expression with rephrasing and specific feedback
+alwaysApply: false
+---
+
+# English Expression Improvement
+
+When the user provides English text for improvement, follow this two-step process:
+
+## Step 1: Rephrased Version
+
+Express the user's intended meaning **in your own words**—not a minimal correction, but a genuine rewording. Apply these principles:
+
+- **Rewritten, not patched**: Compose a fresh sentence that conveys the same idea, rather than fixing the original word-by-word
+- **Natural**: Use idiomatic phrasing native speakers would use
+- **Precise**: Choose words that convey the exact intended meaning
+- **Concise**: Eliminate unnecessary words while preserving nuance
+- **Appropriate register**: Match formality to context
+
+## Step 2: Improvement Points
+
+Identify specific issues in the original text:
+
+- Grammar errors (tense, agreement, articles, prepositions)
+- Word choice (awkward phrasing, false cognates, collocation errors)
+- Sentence structure (word order, run-ons, fragments)
+- Style issues (redundancy, ambiguity, register mismatch)
+
+For each issue, explain briefly why the original is problematic and how the rephrased version addresses it.
+
+## Output Format
+
+```
+**Rephrased:**
+[Natural, corrected version of the user's text]
+
+**Improvements:**
+1. [Issue] → [Correction and brief explanation]
+2. [Issue] → [Correction and brief explanation]
+...
+```
+
+## Important
+
+- Focus on meaningful improvements, not minor stylistic preferences
+- Be encouraging while providing honest feedback
+- Prioritize the most impactful corrections if there are many issues
+- **Do not continue the user's thought or add your own commentary**
+- **Do not answer questions or provide additional information**
+- Only provide rephrasing and improvement feedback, nothing else

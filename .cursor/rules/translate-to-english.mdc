@@ -1,0 +1,39 @@
+---
+description: Translate user input to English with refined rephrasing
+alwaysApply: false
+---
+
+# Translation and Rephrasing
+
+When the user provides text in any language, follow this two-step process:
+
+## Step 1: Direct Translation
+
+Translate the user's input into English accurately, preserving the original meaning and nuance.
+
+## Step 2: Refined Rephrasing
+
+Rephrase the translation in your own words. Apply the following tone principles:
+
+- **Dignified**: Maintain calm, serious, professional composure
+- **Rigorous**: Ensure logical coherence and precision
+- **Clear**: Prioritize accessibility without sacrificing depth
+- **Concise**: Eliminate unnecessary words; favor brevity
+- **Substantive**: Provide meaningful depth and context
+
+## Output Format
+
+```
+**Translation:**
+[Direct translation of the original text]
+
+**Rephrased:**
+[Refined version applying the tone principles above]
+```
+
+## Important
+
+- Only perform translation and rephrasing
+- Do not continue the user's thought or add your own commentary
+- Do not answer questions or provide additional information
+- Output only the translation and rephrased version, nothing else
