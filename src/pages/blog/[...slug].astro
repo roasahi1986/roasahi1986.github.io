@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const isPoem = post.data.tags.includes('poem');
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <div class="max-w-3xl mx-auto px-6 py-20">
+    <a
+      href="/blog"
+      class="text-sm text-dark-muted hover:text-dark-accent transition-colors mb-6 inline-block"
+    >
+      ← Back to Blog
+    </a>
+
+    <article class="glass rounded-2xl p-8 md:p-12">
+      <header class:list={['mb-10', isPoem && 'text-center']}>
+        <h1 class:list={[
+          'font-bold text-dark-text mb-4',
+          isPoem ? 'text-3xl md:text-4xl' : 'text-4xl md:text-5xl'
+        ]}>
+          {post.data.title}
+        </h1>
+        <div class:list={[
+          'flex items-center gap-4 text-dark-muted',
+          isPoem ? 'justify-center text-sm' : ''
+        ]}>
+          <time>{formattedDate}</time>
+          {post.data.tags.length > 0 && (
+            <div class="flex gap-2">
+              {post.data.tags.map((tag) => (
+                <a href={`/blog/tag/${tag}`} class="text-xs px-2 py-1 bg-white/[0.05] rounded-md hover:bg-white/[0.1] transition-colors">
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
+
+      <div class:list={['prose max-w-none', isPoem && 'poem-content']}>
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .poem-content :global(p) {
+    white-space: pre-line;
+    line-height: 1.15;
+    margin-bottom: 3em;
+  }
+
+  .poem-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>
