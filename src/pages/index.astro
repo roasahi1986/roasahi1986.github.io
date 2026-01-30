@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featuredProjects = projects.slice(0, 2);
+const recentPosts = posts.slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="relative glass rounded-2xl p-8 md:p-12 overflow-hidden">
+      <!-- Decorative gradient orbs (contained within the card) -->
+      <div class="gradient-orb gradient-orb-primary w-80 h-80 -top-40 -right-40"></div>
+      <div class="gradient-orb gradient-orb-secondary w-64 h-64 top-20 -left-32"></div>
+      
+      <div class="relative max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-dark-text mb-6">
+          Hi, I'm <span class="text-dark-accent">Ro Asahi - 盧旭 -</span>
+        </h1>
+        <p class="text-xl text-dark-muted leading-relaxed mb-8">
+          Welcome to my personal space on the web. I build things, write about what I learn, and share my reflections along the way.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="/projects"
+            class="px-6 py-3 bg-dark-accent text-white font-medium rounded-lg hover:bg-dark-accent/90 transition-colors shadow-lg shadow-dark-accent/25"
+          >
+            View Projects
+          </a>
+          <a
+            href="/blog"
+            class="px-6 py-3 bg-white/[0.05] backdrop-blur-md border border-white/[0.1] text-dark-text font-medium rounded-lg hover:bg-white/[0.1] hover:border-white/[0.2] transition-all"
+          >
+            Read Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Blog Posts -->
+  <section class="relative max-w-5xl mx-auto px-6 py-16">
+    <!-- Subtle gradient orb -->
+    <div class="gradient-orb gradient-orb-primary w-64 h-64 -bottom-32 right-0 opacity-50"></div>
+    
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-dark-text">Recent Posts</h2>
+      <a href="/blog" class="text-sm text-dark-accent hover:underline">
+        View all →
+      </a>
+    </div>
+    <div class="relative grid gap-6">
+      {recentPosts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={post.id}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"></div>
+  </div>
+
+  <!-- Featured Projects -->
+  <section class="relative max-w-5xl mx-auto px-6 py-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-dark-text">Featured Projects</h2>
+      <a href="/projects" class="text-sm text-dark-accent hover:underline">
+        View all →
+      </a>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      {featuredProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tags={project.data.tags}
+          href={project.data.href}
+          github={project.data.github}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

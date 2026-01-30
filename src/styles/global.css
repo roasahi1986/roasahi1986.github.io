@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-bg text-dark-text antialiased;
+  }
+
+  ::selection {
+    @apply bg-dark-accent/30;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card effect */
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300;
+  }
+
+  .glass-hover:hover {
+    @apply bg-white/[0.06] border-white/[0.15];
+    box-shadow:
+      0 8px 32px rgba(59, 130, 246, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Decorative gradient orbs for depth */
+  .gradient-orb {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+
+  .gradient-orb-primary {
+    @apply bg-dark-accent/20;
+  }
+
+  .gradient-orb-secondary {
+    @apply bg-purple-500/15;
+  }
+
+  /* Grid with single column layout (full-width cards) */
+  .grid-fill-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .grid-fill-row > * {
+    min-width: 0;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-dark-text leading-relaxed;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    @apply text-dark-text font-bold;
+  }
+
+  .prose h1 {
+    @apply text-3xl mt-8 mb-4;
+  }
+
+  .prose h2 {
+    @apply text-2xl mt-6 mb-3;
+  }
+
+  .prose h3 {
+    @apply text-xl mt-4 mb-2;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose a {
+    @apply text-dark-accent hover:underline;
+  }
+
+  .prose code {
+    @apply bg-dark-card px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-dark-card p-4 rounded-lg overflow-x-auto my-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose li {
+    @apply mb-1;
+  }
+
+  .prose ul li {
+    @apply list-disc;
+  }
+
+  .prose ol li {
+    @apply list-decimal;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-dark-accent pl-4 italic my-4 text-dark-muted;
+  }
+}

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  
+  return allTags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((post) => !post.data.draft && post.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+const allPosts = (await getCollection('blog')).filter((post) => !post.data.draft);
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))].sort();
+---
+
+<BaseLayout title={`Posts tagged "${tag}"`} description={`All posts tagged with ${tag}`}>
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="mb-8">
+      <a
+        href="/blog"
+        class="text-sm text-dark-muted hover:text-dark-accent transition-colors inline-block"
+      >
+        ← All Posts
+      </a>
+    </div>
+
+    <h1 class="text-4xl font-bold text-dark-text mb-4">
+      Posts tagged <span class="text-dark-accent">"{tag}"</span>
+    </h1>
+    <p class="text-dark-muted text-lg mb-8">
+      {posts.length} {posts.length === 1 ? 'post' : 'posts'} found
+    </p>
+
+    <!-- Tag filter -->
+    <div class="flex flex-wrap gap-2 mb-12">
+      <a
+        href="/blog"
+        class="text-sm px-3 py-1.5 rounded-lg bg-white/[0.05] text-dark-muted hover:bg-white/[0.1] transition-colors"
+      >
+        All
+      </a>
+      {allTags.map((t) => (
+        <a
+          href={`/blog/tag/${t}`}
+          class:list={[
+            'text-sm px-3 py-1.5 rounded-lg transition-colors',
+            t === tag
+              ? 'bg-dark-accent text-white'
+              : 'bg-white/[0.05] text-dark-muted hover:bg-white/[0.1]',
+          ]}
+        >
+          {t}
+        </a>
+      ))}
+    </div>
+
+    <div class="grid-fill-row">
+      {posts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={post.id}
+        />
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <p class="text-dark-muted text-center py-12">
+        No posts with this tag yet.
+      </p>
+    )}
+  </section>
+</BaseLayout>

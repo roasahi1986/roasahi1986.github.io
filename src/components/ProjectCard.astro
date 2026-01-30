@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  href?: string;
+  github?: string;
+}
+
+const { title, description, tags, href, github } = Astro.props;
+---
+
+<article class="group glass glass-hover rounded-xl p-6">
+  <h3 class="text-xl font-semibold text-dark-text mb-2 group-hover:text-dark-accent transition-colors">
+    {title}
+  </h3>
+  <p class="text-dark-muted text-sm mb-4 line-clamp-2">
+    {description}
+  </p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    {tags.map((tag) => (
+      <span class="text-xs px-2 py-1 bg-dark-accent/10 text-dark-accent rounded-md">
+        {tag}
+      </span>
+    ))}
+  </div>
+  <div class="flex gap-4 text-sm">
+    {href && (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-dark-accent hover:underline"
+      >
+        Live Demo →
+      </a>
+    )}
+    {github && (
+      <a
+        href={github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-dark-muted hover:text-dark-text transition-colors"
+      >
+        GitHub
+      </a>
+    )}
+  </div>
+</article>

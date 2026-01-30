@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects" description="Browse my projects and work">
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <h1 class="text-4xl font-bold text-dark-text mb-4">Projects</h1>
+    <p class="text-dark-muted text-lg mb-2 max-w-2xl italic font-serif">
+      "Study the science of art. Study the art of science. Develop your senses—especially learn how to see. Realize that everything connects to everything else."
+    </p>
+    <p class="text-dark-muted text-sm mb-12 text-right max-w-2xl italic font-serif">
+      — Leonardo da Vinci
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tags={project.data.tags}
+          href={project.data.href}
+          github={project.data.github}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
