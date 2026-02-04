@@ -1,6 +1,6 @@
 ---
 title: "Upon Exile"
-description: ""
+description: "Written after a layoff, this poem reflects on being cast out from the grand castles of corporate order. Yet exile brings clarity: no longer a dependent, the speaker embraces the chance to become a builder of their own kingdom."
 date: 2026-02-04
 tags: ["poem"]
 ---
