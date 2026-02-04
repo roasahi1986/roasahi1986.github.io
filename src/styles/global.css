@@ -49,46 +49,15 @@
     @apply bg-purple-500/15;
   }
 
-  /* Grid that expands last row items to fill available space */
+  /* Grid with single column layout (full-width cards) */
   .grid-fill-row {
     display: grid;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
   .grid-fill-row > * {
     min-width: 0;
-  }
-
-  @media (min-width: 768px) {
-    .grid-fill-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-fill-row > *:last-child:nth-child(odd) {
-      grid-column: span 2;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .grid-fill-row {
-      grid-template-columns: repeat(6, 1fr);
-    }
-
-    /* Default: each item spans 2 columns (6/3 = 2, gives 3 items per row) */
-    .grid-fill-row > * {
-      grid-column: span 2;
-    }
-
-    /* 1 item in last row: span all 6 columns */
-    .grid-fill-row > *:last-child:nth-child(3n + 1) {
-      grid-column: span 6;
-    }
-
-    /* 2 items in last row: each spans 3 columns (6/2 = 3) */
-    .grid-fill-row > *:nth-last-child(2):nth-child(3n + 1),
-    .grid-fill-row > *:nth-last-child(2):nth-child(3n + 1) ~ *:last-child {
-      grid-column: span 3;
-    }
   }
 }
 
