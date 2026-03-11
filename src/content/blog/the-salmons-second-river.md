@@ -2,7 +2,7 @@
 title: "The Salmon's Second River"
 description: "People chase deadlines endlessly, moving from one task to the next, with no space for learning. Only when work disappears do they discover what was always there—ideas and skills that would have made them better at the very work they lost."
 date: 2026-02-03
-tags: ["poem"]
+tags: ["Poem"]
 ---
 
 The waterfall knows only down,  

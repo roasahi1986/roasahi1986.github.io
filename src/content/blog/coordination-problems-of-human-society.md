@@ -2,7 +2,7 @@
 title: "Society as Recursive Coordination"
 description: "Human society operates by solving coordination problems at multiple scales simultaneously — and every solved coordination problem generates, at a higher level, a new one that did not previously exist. From this single principle, we can derive the foundational mechanisms of social order, the structural peculiarities of the present era, the systematic failure of cognitive tools in fast-changing environments, the gravitational pull toward centralization, and the way AI is restructuring both coordination and status."
 date: 2026-03-11
-tags: ["society"]
+tags: ["Society"]
 ---
 
 ## 1. The Core Thesis

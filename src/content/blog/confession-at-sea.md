@@ -2,7 +2,7 @@
 title: "Confession at Sea"
 description: "A confession of a shameful wish: while fearing punishment for my own transgressions, I fantasized that those more successful than me would suffer even worse. In the end, I may be the one who falls hardest—and the face I wore while wishing others to ruin is too ugly to bear."
 date: 2026-02-09
-tags: ["poem"]
+tags: ["Poem"]
 ---
 
 We held the rail against the gale,  

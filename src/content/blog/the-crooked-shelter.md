@@ -2,7 +2,7 @@
 title: "The Crooked Shelter"
 description: "I used to quarrel with my family over little things, never quite seeing eye to eye. But when I stumbled, I found them waiting—imperfect, yet unmistakably warm. Love doesn't have to be flawless to be real."
 date: 2026-01-29
-tags: ["poem"]
+tags: ["Poem"]
 ---
 
 The nest is woven rough and wrong,  

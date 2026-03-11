@@ -2,7 +2,7 @@
 title: "Winter's Law"
 description: "Parkinson's Law through natural imagery: organizations expand endlessly until they ossify. Fortunately, economic cycles function like seasons—preventing stagnation and allowing ecosystems to grow increasingly diverse and beautiful."
 date: 2026-02-03
-tags: ["poem"]
+tags: ["Poem"]
 ---
 
 The hive builds halls no bee will fill,  
